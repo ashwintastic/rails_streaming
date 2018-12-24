@@ -1,0 +1,33 @@
+
+<% sleep 5%>
+
+
+<div class="container custom-class">
+  <div class="row">
+    <h2>Post details</h2>
+
+    <tbody>
+    <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.desc %></td>
+          <td><%= link_to 'Show', post %></td>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+    </tbody>
+    <p>Left side Navigation</p>
+  </div>
+</div>
+
+
+
+
+<style>
+  .custom-class {
+    background-color: #C2C3BC;
+    width: 30rem;
+    margin-left: 1rem;
+    text-align: center;
+  }
+</style>

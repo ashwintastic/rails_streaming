@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<style>
+  .custom-right-css {
+    background-color: aliceblue;
+    width: 30rem;
+    margin-left: 77rem;
+    position: fixed;
+    text-align: center;
+  }
+</style>
+<html>
+  <head>
+    <title>RailsStream</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">WebSiteName</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Page 1</a></li>
+        <li><a href="#">Page 2</a></li>
+        <li><a href="#">Page 3</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <% sleep 5 %>
+
+  <div class="custom-right-css">
+    <div class="row">
+      <h2>Right Post details</h2>
+
+      <tbody>
+      <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.desc %></td>
+            <td><%= link_to 'Show', post %></td>
+            <td><%= link_to 'Edit', edit_post_path(post) %></td>
+            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+      <p>Left side Navigation</p>
+    </div>
+  </div>
+    <%= yield %>
+  </body>
+</html>
+
+
